@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/fav_page.dart';
+import 'package:reserva_t/restaurantes.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -11,10 +13,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
   final _pagesList=[
-    Center(child: Text("Restaurantes")),
-    Center(child: Text("Favoritos")),
-    Center(child: Text("Mensajes")),
-    Center(child: Text("Mi perfil")),
+    Resturantes(),
+    FavPage(),
+    Resturantes(),
+    FavPage(),
   ];
 
   final _pagesNameList=[
@@ -29,34 +31,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('Reserva[T]'),
         ),
-        body: Column(
-          children: [
-            IndexedStack(index: _currentPageIndex,
-            children: _pagesList),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Search",
-                  prefixIcon: Icon(Icons.search)
-                ),
-              ),
-            ),
-            Expanded(
-          child: 
-          ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                    leading: FlutterLogo(size: 56.0),
-                    title: Text('Restaurante X'),
-                    subtitle: Text('Descirpcion res'),
-                    trailing: IconButton(iconSize: 40, icon: Icon(Icons.arrow_right), onPressed: () {  },),
-              );
-            },
-          ),)
-          ],
-        ),
+        body: _pagesList[_currentPageIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.indigo.shade900,
@@ -70,18 +45,22 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
               label: _pagesNameList[0],
               icon: Icon(Icons.view_carousel),
+              backgroundColor: Colors.blue
             ),
             BottomNavigationBarItem(
               label: _pagesNameList[1],
-              icon: Icon(Icons.favorite)
+              icon: Icon(Icons.favorite),
+              backgroundColor: Colors.red
             ),
             BottomNavigationBarItem(
               label: _pagesNameList[2],
               icon: Icon(Icons.message),
+              backgroundColor: Colors.yellow
             ),
             BottomNavigationBarItem(
               label: _pagesNameList[3],
               icon: Icon(Icons.portrait_rounded),
+              backgroundColor: Colors.green
             ),
           ],
         ),
