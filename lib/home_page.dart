@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:reserva_t/fav_page.dart';
+import 'package:reserva_t/mensajes.dart';
 import 'package:reserva_t/perfilUsr.dart';
 import 'package:reserva_t/restaurantes.dart';
 
-
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({Key key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,14 +13,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
-  final _pagesList=[
+  final _pagesList = [
     Resturantes(),
     FavPage(),
-    Resturantes(),
+    Mensajes(),
     perfil_usuario(),
   ];
 
-  final _pagesNameList=[
+  final _pagesNameList = [
     "Restaurantes",
     "Favoritos",
     "Mensajes",
@@ -29,42 +29,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Reserva[T]'),
-        ),
-        body: _pagesList[_currentPageIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.indigo.shade900,
-          currentIndex: _currentPageIndex,
-          onTap: (index) {
-            setState(() {
-            _currentPageIndex = index;  
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              label: _pagesNameList[_currentPageIndex],
+      appBar: AppBar(
+        title: Text('Reserva[T]'),
+      ),
+      body: _pagesList[_currentPageIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.indigo.shade900,
+        currentIndex: _currentPageIndex,
+        onTap: (index) {
+          setState(() {
+            _currentPageIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+              label: _pagesNameList[0],
               icon: Icon(Icons.view_carousel),
-              backgroundColor: Colors.blue
-            ),
-            BottomNavigationBarItem(
-              label: _pagesNameList[_currentPageIndex],
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              label: _pagesNameList[1],
               icon: Icon(Icons.favorite),
-              backgroundColor: Colors.red
-            ),
-            BottomNavigationBarItem(
-              label: _pagesNameList[_currentPageIndex],
+              backgroundColor: Colors.red),
+          BottomNavigationBarItem(
+              label: _pagesNameList[2],
               icon: Icon(Icons.message),
-              backgroundColor: Colors.yellow
-            ),
-            BottomNavigationBarItem(
-              label: _pagesNameList[_currentPageIndex],
+              backgroundColor: Colors.yellow),
+          BottomNavigationBarItem(
+              label: _pagesNameList[3],
               icon: Icon(Icons.portrait_rounded),
-              backgroundColor: Colors.green
-            ),
-          ],
-        ),
-      );
+              backgroundColor: Colors.green),
+        ],
+      ),
+    );
   }
 }

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
-class FavPage extends StatefulWidget {
-  FavPage({Key key}) : super(key: key);
+class Historial extends StatefulWidget {
+  Historial({Key key}) : super(key: key);
 
   @override
-  State<FavPage> createState() => _FavPageState();
+  State<Historial> createState() => _HistorialState();
 }
 
-class _FavPageState extends State<FavPage> {
+class _HistorialState extends State<Historial> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Historial de restaurantes'),
+      ),
       body: Column(
         children: [
           Padding(
@@ -27,13 +30,8 @@ class _FavPageState extends State<FavPage> {
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
                   leading: FlutterLogo(size: 56.0),
-                  title: Text('Restaurante Fav'),
-                  subtitle: Text('Descirpcion res'),
-                  trailing: IconButton(
-                    iconSize: 40,
-                    icon: Icon(Icons.arrow_right),
-                    onPressed: () {},
-                  ),
+                  title: Text('Restaurante'),
+                  subtitle: Text('Descirpcion de restaurante'),
                 );
               },
             ),

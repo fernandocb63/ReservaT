@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/chat.dart';
 
-class FavPage extends StatefulWidget {
-  FavPage({Key key}) : super(key: key);
+class Mensajes extends StatefulWidget {
+  Mensajes({Key key}) : super(key: key);
 
   @override
-  State<FavPage> createState() => _FavPageState();
+  State<Mensajes> createState() => _MensajesState();
 }
 
-class _FavPageState extends State<FavPage> {
+class _MensajesState extends State<Mensajes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +28,15 @@ class _FavPageState extends State<FavPage> {
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
                   leading: FlutterLogo(size: 56.0),
-                  title: Text('Restaurante Fav'),
-                  subtitle: Text('Descirpcion res'),
+                  title: Text('Nombre de restaurante'),
+                  subtitle: Text('Ultimo mensaje de conversación'),
                   trailing: IconButton(
                     iconSize: 40,
-                    icon: Icon(Icons.arrow_right),
-                    onPressed: () {},
+                    icon: Icon(Icons.arrow_right_alt_rounded),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Chat()));
+                    },
                   ),
                 );
               },
