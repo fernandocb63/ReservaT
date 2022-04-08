@@ -10,7 +10,10 @@ class Chat extends StatefulWidget {
 class ChatMessage {
   String messageContent;
   String messageType;
-  ChatMessage({@required this.messageContent, @required this.messageType});
+  ChatMessage({this.messageContent,this.messageType});
+}
+
+class required {
 }
 
 class _ChatState extends State<Chat> {

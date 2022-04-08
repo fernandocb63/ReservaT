@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "131871776689",
+    "project_id": "reservate-t",
+    "storage_bucket": "reservate-t.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131871776689:android:3f7c4cd58e6dd2e005a790",
+        "android_client_info": {
+          "package_name": "com.example.reserva_t"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131871776689-h43q7gv7g04o8t5alhntijnbgqe46gdj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reserva_t",
+            "certificate_hash": "afb2bd23741bc619b309be9093c1b0d6f10504de"
+          }
+        },
+        {
+          "client_id": "131871776689-vpioqa9tn0qupu876u7cpbalr6h2d39l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFzB4DsIiajc7GQ3TdtVfzfkt10xH9sQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131871776689-vpioqa9tn0qupu876u7cpbalr6h2d39l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
