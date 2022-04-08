@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/fav_local.dart';
+import 'package:reserva_t/descripcion_user.dart';
+import 'package:reserva_t/fav_res.dart';
 import 'package:reserva_t/historial.dart';
 
 class perfil_usuario extends StatefulWidget {
@@ -35,7 +36,10 @@ class _perfil_usuarioState extends State<perfil_usuario> {
             leading: IconButton(
               iconSize: 40,
               icon: Icon(Icons.book),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Descripcion_user()));
+              },
             ),
           ),
         ),
@@ -51,7 +55,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
               icon: Icon(Icons.favorite),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => fav_res()));
+                    .push(MaterialPageRoute(builder: (context) => Fav_res()));
               },
             ),
           ),

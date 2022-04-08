@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/un_restaurante.dart';
 
-class fav_res extends StatefulWidget {
-  fav_res({Key key}) : super(key: key);
+class Fav_res extends StatefulWidget {
+  Fav_res({Key key}) : super(key: key);
 
   @override
-  State<fav_res> createState() => _fav_resState();
+  State<Fav_res> createState() => _Fav_resState();
 }
 
-class _fav_resState extends State<fav_res> {
+class _Fav_resState extends State<Fav_res> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +36,10 @@ class _fav_resState extends State<fav_res> {
                   trailing: IconButton(
                     iconSize: 40,
                     icon: Icon(Icons.arrow_right),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Un_restaurante()));
+                    },
                   ),
                 );
               },

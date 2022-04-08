@@ -35,7 +35,7 @@ class _ResturantesState extends State<Resturantes> {
                   icon: Icon(Icons.arrow_right),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => un_restaurante()));
+                        builder: (context) => Un_restaurante()));
                   },
                 ),
               );

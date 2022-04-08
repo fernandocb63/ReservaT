@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/mapa.dart';
+import 'package:reserva_t/menu.dart';
+import 'package:reserva_t/reservacion.dart';
 
-class un_restaurante extends StatefulWidget {
-  un_restaurante({Key key}) : super(key: key);
+class Un_restaurante extends StatefulWidget {
+  Un_restaurante({Key key}) : super(key: key);
 
   @override
-  State<un_restaurante> createState() => _un_restauranteState();
+  State<Un_restaurante> createState() => _Un_restauranteState();
 }
 
-class _un_restauranteState extends State<un_restaurante> {
+class _Un_restauranteState extends State<Un_restaurante> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +38,10 @@ class _un_restauranteState extends State<un_restaurante> {
                 trailing: IconButton(
                   iconSize: 40,
                   icon: Icon(Icons.menu_book),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Menu()));
+                  },
                 ),
               ),
             ),
@@ -49,7 +55,10 @@ class _un_restauranteState extends State<un_restaurante> {
                 trailing: IconButton(
                   iconSize: 40,
                   icon: Icon(Icons.perm_contact_cal_outlined),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Reservacion()));
+                  },
                 ),
               ),
             ),
@@ -63,21 +72,10 @@ class _un_restauranteState extends State<un_restaurante> {
                 trailing: IconButton(
                   iconSize: 40,
                   icon: Icon(Icons.map),
-                  onPressed: () {},
-                ),
-              ),
-            ),
-            Card(
-              color: Colors.white60,
-              child: ListTile(
-                title: Text(
-                  'Mensajes',
-                  style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                ),
-                trailing: IconButton(
-                  iconSize: 40,
-                  icon: Icon(Icons.message),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Mapa()));
+                  },
                 ),
               ),
             ),

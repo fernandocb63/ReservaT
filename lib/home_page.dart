@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reserva_t/fav_page.dart';
-import 'package:reserva_t/mensajes.dart';
 import 'package:reserva_t/perfilUsr.dart';
 import 'package:reserva_t/restaurantes.dart';
 
@@ -16,7 +15,6 @@ class _HomePageState extends State<HomePage> {
   final _pagesList = [
     Resturantes(),
     FavPage(),
-    Mensajes(),
     perfil_usuario(),
   ];
 
@@ -53,10 +51,6 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Colors.red),
           BottomNavigationBarItem(
               label: _pagesNameList[2],
-              icon: Icon(Icons.message),
-              backgroundColor: Colors.yellow),
-          BottomNavigationBarItem(
-              label: _pagesNameList[3],
               icon: Icon(Icons.portrait_rounded),
               backgroundColor: Colors.green),
         ],

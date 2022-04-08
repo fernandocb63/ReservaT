@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/un_restaurante.dart';
 
 class FavPage extends StatefulWidget {
   FavPage({Key key}) : super(key: key);
@@ -32,7 +33,10 @@ class _FavPageState extends State<FavPage> {
                   trailing: IconButton(
                     iconSize: 40,
                     icon: Icon(Icons.arrow_right),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Un_restaurante()));
+                    },
                   ),
                 );
               },
