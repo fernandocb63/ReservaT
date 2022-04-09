@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reserva_t/fav_page.dart';
-import 'package:reserva_t/perfilUsr.dart';
-import 'package:reserva_t/restaurantes.dart';
+import 'package:reserva_t/restaurante/restaurantes.dart';
+import 'package:reserva_t/usuario/perfilUsr.dart';
+import 'package:reserva_t/restaurante/getRestaurante.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
   final _pagesList = [
-    Resturantes(),
+    ResU(),
     FavPage(),
     perfil_usuario(),
   ];

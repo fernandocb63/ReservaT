@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/un_restaurante.dart';
+import 'package:reserva_t/restaurante/un_restaurante.dart';
 
 class Resturantes extends StatefulWidget {
-  Resturantes({Key key}) : super(key: key);
-
+  final Map<String, dynamic> publicFData;
+  Resturantes({Key key, this.publicFData}) : super(key: key);
   @override
-  State<Resturantes> createState() => _ResturantesState();
+    State<Resturantes> createState() => _ResturantesState();
 }
 
 class _ResturantesState extends State<Resturantes> {
@@ -24,11 +24,9 @@ class _ResturantesState extends State<Resturantes> {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
+          child: ListTile(
                 leading: FlutterLogo(size: 56.0),
-                title: Text('Restaurante X'),
+                // title: Text("${widget.publicFData["Nombre"].toString()[0]}"),
                 subtitle: Text('Descirpcion res'),
                 trailing: IconButton(
                   iconSize: 40,
@@ -38,9 +36,7 @@ class _ResturantesState extends State<Resturantes> {
                         builder: (context) => Un_restaurante()));
                   },
                 ),
-              );
-            },
-          ),
+              )
         ),
       ],
     ));

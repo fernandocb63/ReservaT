@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/descripcion_user.dart';
-import 'package:reserva_t/fav_res.dart';
-import 'package:reserva_t/historial.dart';
+import 'package:reserva_t/usuario/descripcion_user.dart';
+import 'package:reserva_t/usuario/fav_res.dart';
+import 'package:reserva_t/usuario/historial.dart';
 
 class perfil_usuario extends StatefulWidget {
   perfil_usuario({Key key}) : super(key: key);

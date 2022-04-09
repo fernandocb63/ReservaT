@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/un_restaurante.dart';
+import 'package:reserva_t/restaurante/un_restaurante.dart';
 
 class FavPage extends StatefulWidget {
   FavPage({Key key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/mapa.dart';
-import 'package:reserva_t/menu.dart';
-import 'package:reserva_t/reservacion.dart';
+import 'package:reserva_t/restaurante/mapa.dart';
+import 'package:reserva_t/restaurante/menu.dart';
+import 'package:reserva_t/restaurante/reservacion.dart';
 
 class Un_restaurante extends StatefulWidget {
   Un_restaurante({Key key}) : super(key: key);
