@@ -4,7 +4,6 @@ import 'package:reserva_t/restaurante/menu.dart';
 import 'package:reserva_t/restaurante/reservacion.dart';
 
 class Un_restaurante extends StatefulWidget {
-  
   Un_restaurante({Key key}) : super(key: key);
 
   @override
@@ -77,6 +76,20 @@ class _Un_restauranteState extends State<Un_restaurante> {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) => Mapa()));
                   },
+                ),
+              ),
+            ),
+            Card(
+              color: Colors.white60,
+              child: ListTile(
+                title: Text(
+                  'Agregar a favoritos',
+                  style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+                ),
+                trailing: IconButton(
+                  iconSize: 40,
+                  icon: Icon(Icons.favorite),
+                  onPressed: () {},
                 ),
               ),
             ),
