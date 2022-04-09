@@ -12,7 +12,7 @@ class ResU extends StatelessWidget {
       query: FirebaseFirestore.instance
         .collection("Restaurantes"),
       itemBuilder: (BuildContext context, QueryDocumentSnapshot<Map<String,dynamic>> document){
-        // print(document.data());
+        print(document.data());
         return Resturantes(publicFData: document.data());
       }
     );

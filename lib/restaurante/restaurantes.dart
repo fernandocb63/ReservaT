@@ -11,23 +11,12 @@ class Resturantes extends StatefulWidget {
 class _ResturantesState extends State<Resturantes> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: TextField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Search",
-                prefixIcon: Icon(Icons.search)),
-          ),
-        ),
-        Expanded(
-          child: ListTile(
-                leading: FlutterLogo(size: 56.0),
-                // title: Text("${widget.publicFData["Nombre"].toString()[0]}"),
-                subtitle: Text('Descirpcion res'),
+    return Padding(
+      padding: EdgeInsets.all(15.0),
+      child: ListTile(
+                leading: Icon(Icons.place),
+                title: Text("${widget.publicFData["Nombre"].toString()}"),
+                subtitle: Text("${widget.publicFData["Descripcion"].toString()}"),
                 trailing: IconButton(
                   iconSize: 40,
                   icon: Icon(Icons.arrow_right),
@@ -36,9 +25,6 @@ class _ResturantesState extends State<Resturantes> {
                         builder: (context) => Un_restaurante()));
                   },
                 ),
-              )
-        ),
-      ],
-    ));
+      ));
   }
 }

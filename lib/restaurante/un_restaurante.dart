@@ -4,6 +4,7 @@ import 'package:reserva_t/restaurante/menu.dart';
 import 'package:reserva_t/restaurante/reservacion.dart';
 
 class Un_restaurante extends StatefulWidget {
+  
   Un_restaurante({Key key}) : super(key: key);
 
   @override
