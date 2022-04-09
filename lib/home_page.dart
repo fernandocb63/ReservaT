@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reserva_t/fav_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reserva_t/auth/bloc/auth_bloc.dart';
+import 'package:reserva_t/favoritos/mis_favoritos.dart';
+import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/restaurante/restaurantes.dart';
 import 'package:reserva_t/usuario/perfilUsr.dart';
 import 'package:reserva_t/restaurante/getRestaurante.dart';
@@ -15,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
   final _pagesList = [
     ResU(),
-    FavPage(),
+    MisFavoritos(),
     perfil_usuario(),
   ];
 
@@ -30,6 +33,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Reserva[T]'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              BlocProvider.of<AuthBloc>(context).add(SignOutEvent());
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       body: _pagesList[_currentPageIndex],
       bottomNavigationBar: BottomNavigationBar(

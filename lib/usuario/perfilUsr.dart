@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/usuario/descripcion_user.dart';
 import 'package:reserva_t/usuario/fav_res.dart';
 import 'package:reserva_t/usuario/historial.dart';
@@ -24,7 +25,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
             maxRadius: 120,
           ),
         ),
-        Text('nombre usr',
+        Text('Juan Lopez Cordova',
             style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
         Card(
           color: Colors.white60,
@@ -55,7 +56,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
               icon: Icon(Icons.favorite),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Fav_res()));
+                    .push(MaterialPageRoute(builder: (context) => FavPage()));
               },
             ),
           ),

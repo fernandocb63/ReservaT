@@ -16,18 +16,18 @@ class _Un_restauranteState extends State<Un_restaurante> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Nombre restaurante'),
+          title: Text('Vaca Argentina'),
         ),
         body: Column(
           children: [
             Center(
               child: Image(
                 image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                    'https://fastly.4sqi.net/img/general/600x600/51791814_MIh7IEwFWS2GDuG8RTBagHYcLVjHPu-_onsmvnc3GhQ.jpg'),
                 height: 300,
               ),
             ),
-            Text('nombre res',
+            Text('Vaca Argentina',
                 style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
             Card(
               color: Colors.white60,
