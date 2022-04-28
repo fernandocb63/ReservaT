@@ -13,7 +13,7 @@ class ResU extends StatelessWidget {
         .collection("Restaurantes"),
       itemBuilder: (BuildContext context, QueryDocumentSnapshot<Map<String,dynamic>> document){
         print(document.data());
-        return Resturantes(publicFData: document.data());
+        return Resturantes(publicFData: document.data(), docid: document.id,);
       }
     );
   }

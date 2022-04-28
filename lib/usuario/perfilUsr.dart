@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
+import 'package:reserva_t/favoritos/mis_favoritos.dart';
+import 'package:reserva_t/restaurante/getRestaurante.dart';
+import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:reserva_t/usuario/descripcion_user.dart';
 import 'package:reserva_t/usuario/fav_res.dart';
 import 'package:reserva_t/usuario/historial.dart';
@@ -55,8 +59,9 @@ class _perfil_usuarioState extends State<perfil_usuario> {
               iconSize: 30,
               icon: Icon(Icons.favorite),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => FavPage()));
+                //BlocProvider.of<FavpageBloc>(context).add(GetMyFavorites());
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MisFavoritos()));
               },
             ),
           ),

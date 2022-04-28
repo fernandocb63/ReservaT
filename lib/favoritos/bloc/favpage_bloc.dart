@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,14 +15,13 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
     on<FavpageEvent>(_getfav );
   }
   FutureOr<void> _getfav(event, emit) async {
-      emit(FavpageLoading());
       try{
         var queryUser = await FirebaseFirestore.instance
           .collection("Usuarios")
           .doc("${FirebaseAuth.instance.currentUser.uid}");
 
         var docsRef = await queryUser.get();
-        List<dynamic> listIds = docsRef.data()["Favoritos"] ?? [];
+        var listIds = docsRef.data()["Favoritos"] ?? [];
         print(listIds);
 
         var queryFotos = await FirebaseFirestore.instance
@@ -30,8 +30,7 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
 
         var allMyFotosList = queryFotos.docs
           .where((element) => listIds.contains(element.id))
-          .map((e) => e.data().cast<String, dynamic>())
-          // .addAll({"docId":e.id}))
+          .map((element) => element.data().cast<String, dynamic>())
           .toList();
         print(allMyFotosList);
 

@@ -3,7 +3,8 @@ import 'package:reserva_t/restaurante/un_restaurante.dart';
 
 class Resturantes extends StatefulWidget {
   final Map<String, dynamic> publicFData;
-  Resturantes({Key key, this.publicFData}) : super(key: key);
+  final String docid;
+  Resturantes({Key key, this.publicFData, this.docid}) : super(key: key);
   @override
     State<Resturantes> createState() => _ResturantesState();
 }
@@ -22,7 +23,16 @@ class _ResturantesState extends State<Resturantes> {
                   icon: Icon(Icons.arrow_right),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Un_restaurante()));
+                        builder: (context) => Un_restaurante(
+                          nombre: widget.publicFData["Nombre"].toString(), 
+                          descripcion: widget.publicFData["Descripcion"].toString(), 
+                          foto: widget.publicFData["Foto"].toString(),
+                          latitude: widget.publicFData["Latitude"].toString(),
+                          longitud: widget.publicFData["Longitud"].toString(),
+                          menu: widget.publicFData["Menu"].toString(),
+                          logo: widget.publicFData["Logo"].toString(),
+                          id: widget.docid
+                          )));
                   },
                 ),
       ));

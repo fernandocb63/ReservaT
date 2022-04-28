@@ -4,6 +4,7 @@ import 'package:reserva_t/auth/bloc/auth_bloc.dart';
 import 'package:reserva_t/favoritos/mis_favoritos.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/restaurante/restaurantes.dart';
+import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:reserva_t/usuario/perfilUsr.dart';
 import 'package:reserva_t/restaurante/getRestaurante.dart';
 
@@ -25,7 +26,6 @@ class _HomePageState extends State<HomePage> {
   final _pagesNameList = [
     "Restaurantes",
     "Favoritos",
-    "Mensajes",
     "Mi perfil",
   ];
   @override
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       body: _pagesList[_currentPageIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.indigo.shade900,
+        backgroundColor: Colors.black,
         currentIndex: _currentPageIndex,
         onTap: (index) {
           setState(() {
@@ -60,7 +60,8 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               label: _pagesNameList[1],
               icon: Icon(Icons.favorite),
-              backgroundColor: Colors.red),
+              backgroundColor: Colors.red,
+              ),
           BottomNavigationBarItem(
               label: _pagesNameList[2],
               icon: Icon(Icons.portrait_rounded),

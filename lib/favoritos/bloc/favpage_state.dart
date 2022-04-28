@@ -14,6 +14,7 @@ class FavpageInitial extends FavpageState {}
 class FavpageSuccess extends FavpageState {
     final List<Map<String,dynamic>> myFav;
 
+
   FavpageSuccess({this.myFav});
 
   @override

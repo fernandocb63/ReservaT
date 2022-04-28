@@ -26,6 +26,7 @@ class MisFavoritos extends StatelessWidget {
             child: Text("No hay datos por mostrar"),
           );
         } else if (state is FavpageSuccess){
+          BlocProvider.of<FavpageBloc>(context).add(GetMyFavorites());
           return ListView.builder(
             itemCount: state.myFav.length,
             itemBuilder: (BuildContext context, int index){

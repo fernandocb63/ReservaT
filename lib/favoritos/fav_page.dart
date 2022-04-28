@@ -35,7 +35,9 @@ class _FavPageState extends State<FavPage> {
                     icon: Icon(Icons.arrow_right),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Un_restaurante()));
+                          builder: (context) => Un_restaurante(
+                            
+                          )));
                     },
                   ),
                 );
