@@ -40,6 +40,10 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_shimmer: ^2.1.2
   url_launcher: ^6.1.0
+  geolocator:
+  geocoding:
+  google_maps_flutter:
+  provider:
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:reserva_t/favoritos/bloc/addfav_bloc.dart';
-import 'package:reserva_t/restaurante/mapa.dart';
+import 'package:reserva_t/google_maps/mapa.dart';
+import 'package:reserva_t/google_maps/mapa_provider.dart';
+import 'package:reserva_t/home_page.dart';
 import 'package:reserva_t/restaurante/menu.dart';
 import 'package:reserva_t/restaurante/reservacion.dart';
 import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
@@ -107,8 +110,12 @@ class _Un_restauranteState extends State<Un_restaurante> {
                       iconSize: 40,
                       icon: Icon(Icons.map),
                       onPressed: () {
+                
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => Mapa()));
+                            MaterialPageRoute(builder: (context) => ChangeNotifierProvider(
+                          create:(context) => MapaProvider(), 
+                          child: Mapa()
+                        )));
                       },
                     ),
                   ),
