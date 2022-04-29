@@ -15,7 +15,10 @@ class _ResturantesState extends State<Resturantes> {
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: ListTile(
-                leading: Icon(Icons.place),
+                leading: Image.network(
+                    widget.publicFData["Foto"].toString(),
+                    height: 300,
+                  ),
                 title: Text("${widget.publicFData["Nombre"].toString()}"),
                 subtitle: Text("${widget.publicFData["Descripcion"].toString()}"),
                 trailing: IconButton(

@@ -33,32 +33,65 @@ class _ItemFavState extends State<ItemFav> {
       },
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: ListTile(
-            leading: IconButton(
+            leading: Image.network(
+                    widget.myData["Foto"].toString(),
+                    height: 300,
+                  ),
+            title: Stack(children:[ 
+              Padding(
+                padding: const EdgeInsets.fromLTRB(180, 0, 0, 0),
+                child: IconButton(
                 onPressed: () {
                   BlocProvider.of<DeleteitemBloc>(context)
                       .add(DeleteMyFav(deleteid: widget.myData["id"]));
                 },
-                icon: Icon(Icons.cancel)),
-            title: Text("${widget.myData["Nombre"]}"),
-            subtitle: Text("${widget.myData["Descripcion"]}"),
-            trailing: IconButton(
-              iconSize: 40,
-              icon: Icon(Icons.arrow_right),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Un_restaurante(
-                          nombre: widget.myData["Nombre"].toString(),
-                          descripcion: widget.myData["Descripcion"].toString(),
-                          foto: widget.myData["Foto"].toString(),
-                          latitude: widget.myData["Latitude"].toString(),
-                          longitud: widget.myData["Longitud"].toString(),
-                          menu: widget.myData["Menu"].toString(),
-                          logo: widget.myData["Logo"].toString(),
-                          //id: widget.docid
-                        )));
-              },
+                icon: Icon(Icons.cancel),
+                iconSize: 20,
+                
+                )
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Text("${widget.myData["Nombre"]}"),
+              ),
+            ],
+            ),
+            subtitle: Stack( children:[ Text("${widget.myData["Descripcion"]}"),
+            ]
+            ),
+            trailing: Stack(
+              children:[ Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: IconButton(
+                  iconSize: 60,
+                  icon: Icon(Icons.arrow_right),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Un_restaurante(
+                              nombre: widget.myData["Nombre"].toString(),
+                              descripcion: widget.myData["Descripcion"].toString(),
+                              foto: widget.myData["Foto"].toString(),
+                              latitude: widget.myData["Latitude"].toString(),
+                              longitud: widget.myData["Longitud"].toString(),
+                              menu: widget.myData["Menu"].toString(),
+                              logo: widget.myData["Logo"].toString(),
+                              //id: widget.docid
+                            )));
+                  },
+                ),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
+              //   child: IconButton(
+              //   onPressed: () {
+              //     BlocProvider.of<DeleteitemBloc>(context)
+              //         .add(DeleteMyFav(deleteid: widget.myData["id"]));
+              //   },
+              //   icon: Icon(Icons.cancel))
+              // ),
+              ],
             ),
           ),
         );
