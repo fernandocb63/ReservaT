@@ -114,7 +114,7 @@ class _Un_restauranteState extends State<Un_restaurante> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ChangeNotifierProvider(
                                 create: (context) => MapaProvider(),
-                                child: Mapa())));
+                                child: Mapa(lat: widget.latitude, long: widget.longitud, nombre: widget.nombre,))));
                       },
                     ),
                   ),

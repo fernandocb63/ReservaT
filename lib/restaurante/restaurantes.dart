@@ -30,7 +30,7 @@ class _ResturantesState extends State<Resturantes> {
                           nombre: widget.publicFData["Nombre"].toString(), 
                           descripcion: widget.publicFData["Descripcion"].toString(), 
                           foto: widget.publicFData["Foto"].toString(),
-                          latitude: widget.publicFData["Latitude"].toString(),
+                          latitude: widget.publicFData["Latitud"].toString(),
                           longitud: widget.publicFData["Longitud"].toString(),
                           menu: widget.publicFData["Menu"].toString(),
                           logo: widget.publicFData["Logo"].toString(),

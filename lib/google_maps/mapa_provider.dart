@@ -6,6 +6,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapaProvider with ChangeNotifier {
   // 0)
+  String lat;
+  String long;
+  
   Set<Marker> mapMarkers = Set();
   GoogleMapController mapController;
   Position currentPosition = Position(
