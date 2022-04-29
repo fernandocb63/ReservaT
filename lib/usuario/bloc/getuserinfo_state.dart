@@ -10,13 +10,12 @@ abstract class GetUserInfoState extends Equatable {
 class GetUserInfoInitial extends GetUserInfoState {}
 
 class GetUserInfoSuccess extends GetUserInfoState {
-  final String foto;
-  final String nombreUsr;
+  final Map mapa;
 
-  GetUserInfoSuccess({this.foto, this.nombreUsr});
+  GetUserInfoSuccess({this.mapa});
 
   @override
-  List<Object> get props => [foto, nombreUsr];
+  List<Object> get props => [mapa];
 }
 
 class GetUserInfoError extends GetUserInfoState {}

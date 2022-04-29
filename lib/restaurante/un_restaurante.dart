@@ -40,16 +40,15 @@ class _Un_restauranteState extends State<Un_restaurante> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddfavBloc, AddfavState>(
       listener: (context, state) {
-        if(state is AddfavSucces){
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Se agrego ${widget.nombre} a favoritos...")));
-        }
-        else if(state is AddfavError){
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("${widget.nombre} ya existe en favoritos...")));
+        if (state is AddfavSucces) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Se agrego ${widget.nombre} a favoritos...")));
+        } else if (state is AddfavError) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("${widget.nombre} ya existe en favoritos...")));
         }
       },
-      builder: (context, state) {    
+      builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
               title: Text('Restaurante'),
@@ -57,9 +56,11 @@ class _Un_restauranteState extends State<Un_restaurante> {
             body: Column(
               children: [
                 Center(
-                  child:Image.network(widget.foto,
-                          height: 300,),
+                  child: Image.network(
+                    widget.foto,
+                    height: 300,
                   ),
+                ),
                 Text(widget.nombre,
                     style:
                         TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
@@ -110,12 +111,10 @@ class _Un_restauranteState extends State<Un_restaurante> {
                       iconSize: 40,
                       icon: Icon(Icons.map),
                       onPressed: () {
-                
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => ChangeNotifierProvider(
-                          create:(context) => MapaProvider(), 
-                          child: Mapa()
-                        )));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ChangeNotifierProvider(
+                                create: (context) => MapaProvider(),
+                                child: Mapa())));
                       },
                     ),
                   ),
