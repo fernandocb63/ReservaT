@@ -29,9 +29,9 @@ class _perfil_usuarioState extends State<perfil_usuario> {
             children: [
               Center(
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage(state.mapa['foto']),
-                  minRadius: 40,
-                  maxRadius: 120,
+                  backgroundImage: NetworkImage(state.mapa['image']),
+                  minRadius: 100,
+                  maxRadius: 100,
                 ),
               ),
               Text(state.mapa['nombre'],

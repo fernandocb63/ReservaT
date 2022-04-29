@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           if (state is AuthSuccessState) {
             BlocProvider.of<GetUserInfoBloc>(context).add(GetInfo());
             return HomePage();
-          } else if (state is UnAuthState || state is AuthErrorState) {
+          } else if (state is UnAuthState || state is AuthErrorState || state is SignOutSuccessState) {
             return LoginPage();
           }
           return Center(child: CircularProgressIndicator());
