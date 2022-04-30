@@ -37,12 +37,17 @@ class _MapaState extends State<Mapa> {
       )
       )
     );
-      return GoogleMap(
-      onMapCreated: _onMapCreated,
-      markers: Set<Marker>.of(_markers),
-        initialCameraPosition: CameraPosition(
-        target: _center,
-        zoom: 70.0,));
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Mapa'),
+        ),
+        body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        markers: Set<Marker>.of(_markers),
+          initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 70.0,)),
+      );
   
   }
   void _onMapCreated(GoogleMapController controller) {
