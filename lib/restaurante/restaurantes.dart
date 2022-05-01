@@ -13,11 +13,12 @@ class _ResturantesState extends State<Resturantes> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(15.0),
+      padding: const EdgeInsets.fromLTRB(3,3,20,20),
       child: ListTile(
                 leading: Image.network(
                     widget.publicFData["Foto"].toString(),
-                    height: 300,
+                    height: 80,
+                    width: 80,
                   ),
                 title: Text("${widget.publicFData["Nombre"].toString()}"),
                 subtitle: Text("${widget.publicFData["Descripcion"].toString()}"),
