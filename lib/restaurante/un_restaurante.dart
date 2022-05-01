@@ -20,7 +20,8 @@ class Un_restaurante extends StatefulWidget {
       this.latitude,
       this.longitud,
       this.logo,
-      this.id})
+      this.id,
+      this.mail})
       : super(key: key);
   String nombre;
   String descripcion;
@@ -30,6 +31,7 @@ class Un_restaurante extends StatefulWidget {
   String longitud;
   String logo;
   String id;
+  String mail;
 
   @override
   State<Un_restaurante> createState() => _Un_restauranteState();
@@ -94,7 +96,7 @@ class _Un_restauranteState extends State<Un_restaurante> {
                       icon: Icon(Icons.perm_contact_cal_outlined),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => BookingCalendarDemoApp()));
+                            builder: (context) => BookingCalendarDemoApp(mail: widget.mail, res: widget.nombre)));
                       },
                     ),
                   ),

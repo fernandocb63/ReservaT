@@ -1,16 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
+import 'components/booking_calendar_main.dart';
 import 'package:mailer/smtp_server/mailgun.dart';
 import 'package:mailer/smtp_server.dart';
-void main() {// Note: if you have Google's "app specific passwords" enabled,
-                                       
-  runApp(const BookingCalendarDemoApp());
+import 'package:intl/intl.dart';
+
+void main() {// Note: if you have Google's "app specific passwords" enabled,                                    
+  runApp(BookingCalendarDemoApp());
 }
 
 class BookingCalendarDemoApp extends StatefulWidget {
-  const BookingCalendarDemoApp({Key key}) : super(key: key);
-
+  BookingCalendarDemoApp({Key key, this.mail, this.res}) : super(key: key);
+  String mail;
+  String res;
   @override
   State<BookingCalendarDemoApp> createState() => _BookingCalendarDemoAppState();
 }
@@ -43,22 +46,25 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
     converted.add(DateTimeRange(
         start: newBooking.bookingStart, end: newBooking.bookingEnd));
     print('${newBooking.toJson()} has been uploaded');
-    sendMail();
+    sendMail(newBooking.bookingStart);
 
   }
 
-    void sendMail() async {
+    void sendMail(DateTime startdate) async {
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+    String string = dateFormat.format(startdate);
+
 
     String username = 'fernandocb634@gmail.com';
-    String password = '';
+    String password = 'zzvtoxcggqypujvn';
 
     final smtpServer = gmail(username, password);
     final equivalentMessage = Message()
-    ..from = Address(username, 'Your name')
-    ..recipients.add(Address('jpmudecci@gmail.com'))
-    ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
+    ..from = Address(username, 'Reserva-T')
+    ..recipients.add(Address("${widget.mail}"))
+    ..subject = 'Reservacion para :: 😀 :: ${DateTime.now()}'
     ..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    ..html = "<h1>Test</h1>\n<p>Hey! Here's some HTML content</p>";
+    ..html = "<h1>Hola ${widget.res}</h1>\n<p>Tienes una reservacion en tu restaurante el dia ${string}</p>";
 
     await send(equivalentMessage, smtpServer);
   }
@@ -87,13 +93,14 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
   Widget build(BuildContext context) {
     
     return MaterialApp(
-        title: 'Booking Calendar Demo',
+        title: 'Reservaciones',
+
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.grey,
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('Booking Calendar Demo'),
+            title:Text('Reservaciones'),
           ),
           body: Center(
             child: BookingCalendar(
@@ -101,6 +108,7 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
               convertStreamResultToDateTimeRanges: convertStreamResultMock,
               getBookingStream: getBookingStreamMock,
               uploadBooking: uploadBookingMock,
+              loadingWidget: CircularProgressIndicator(),
             ),
           ),
         ));

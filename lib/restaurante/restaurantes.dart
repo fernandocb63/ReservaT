@@ -35,7 +35,9 @@ class _ResturantesState extends State<Resturantes> {
                           longitud: widget.publicFData["Longitud"].toString(),
                           menu: widget.publicFData["Menu"].toString(),
                           logo: widget.publicFData["Logo"].toString(),
-                          id: widget.docid
+                          id: widget.docid,
+                          mail: widget.publicFData["mail"].toString()
+
                           )));
                   },
                 ),
