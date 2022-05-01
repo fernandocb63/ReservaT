@@ -73,7 +73,7 @@ class _ItemFavState extends State<ItemFav> {
                               nombre: widget.myData["Nombre"].toString(),
                               descripcion: widget.myData["Descripcion"].toString(),
                               foto: widget.myData["Foto"].toString(),
-                              latitude: widget.myData["Latitude"].toString(),
+                              latitude: widget.myData["Latitud"].toString(),
                               longitud: widget.myData["Longitud"].toString(),
                               menu: widget.myData["Menu"].toString(),
                               logo: widget.myData["Logo"].toString(),
