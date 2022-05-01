@@ -94,7 +94,7 @@ class _Un_restauranteState extends State<Un_restaurante> {
                       icon: Icon(Icons.perm_contact_cal_outlined),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Reservacion()));
+                            builder: (context) => BookingCalendarDemoApp()));
                       },
                     ),
                   ),

@@ -45,6 +45,9 @@ dependencies:
   google_maps_flutter:
   provider:
   latlng: ^0.1.0
+  booking_calendar: ^1.0.0+3
+  flutter_email_sender: ^5.1.0
+  mailer: ^5.1.0
 
 dev_dependencies:
   flutter_test:
