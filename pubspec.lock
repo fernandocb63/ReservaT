@@ -392,6 +392,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0+5"
+  hover_effect:
+    dependency: "direct main"
+    description:
+      name: hover_effect
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
+  hovering:
+    dependency: "direct main"
+    description:
+      name: hovering
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   http:
     dependency: transitive
     description:

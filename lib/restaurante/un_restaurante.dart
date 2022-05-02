@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,8 @@ import 'package:reserva_t/restaurante/menu.dart';
 import 'package:reserva_t/restaurante/reservacion.dart';
 import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
+import"package:hovering/hovering.dart";
+import 'package:hover_effect/hover_effect.dart';
 
 class Un_restaurante extends StatefulWidget {
   Un_restaurante(
@@ -67,24 +70,26 @@ class _Un_restauranteState extends State<Un_restaurante> {
                     style:
                         TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
                 Card(
-                  color: Colors.white60,
-                  child: ListTile(
-                    title: Text(
-                      'Ver menu',
-                      style:
-                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+                      color: Colors.blueGrey.shade900,
+                      elevation: 100.0,
+                      child: ListTile(
+                        title: Text(
+                          'Ver menu',
+                          style:
+                              TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+                        ),
+                        trailing: IconButton(
+                          iconSize: 40,
+                          icon: Icon(Icons.menu_book),
+                          onPressed: () {
+                            launch(widget.menu);
+                          },
+                        ),
+                      ),
                     ),
-                    trailing: IconButton(
-                      iconSize: 40,
-                      icon: Icon(Icons.menu_book),
-                      onPressed: () {
-                        launch(widget.menu);
-                      },
-                    ),
-                  ),
-                ),
                 Card(
-                  color: Colors.white60,
+                  color: Colors.blueGrey.shade900,
+                  elevation: 100.0,
                   child: ListTile(
                     title: Text(
                       'Hacer reservacion',
@@ -102,7 +107,8 @@ class _Un_restauranteState extends State<Un_restaurante> {
                   ),
                 ),
                 Card(
-                  color: Colors.white60,
+                  color: Colors.blueGrey.shade900,
+                  elevation: 100.0,
                   child: ListTile(
                     title: Text(
                       'Mapa',
@@ -122,7 +128,9 @@ class _Un_restauranteState extends State<Un_restaurante> {
                   ),
                 ),
                 Card(
-                  color: Colors.white60,
+                  color: Colors.blueGrey.shade900,
+                  elevation: 100.0,
+                  shadowColor: Colors.white60,
                   child: ListTile(
                     title: Text(
                       'Agregar a favoritos',

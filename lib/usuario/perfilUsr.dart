@@ -37,7 +37,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
               Text(state.mapa['nombre'],
                   style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Descripcion',
@@ -54,7 +54,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 ),
               ),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Restaurantes fav',
@@ -72,7 +72,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 ),
               ),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Historial',
@@ -104,7 +104,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
               Text('',
                   style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Descripcion',
@@ -121,7 +121,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 ),
               ),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Restaurantes fav',
@@ -139,7 +139,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 ),
               ),
               Card(
-                color: Colors.white60,
+                color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
                     'Historial',
