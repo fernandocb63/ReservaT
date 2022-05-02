@@ -5,8 +5,10 @@ import 'components/booking_calendar_main.dart';
 import 'package:mailer/smtp_server/mailgun.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {// Note: if you have Google's "app specific passwords" enabled,                                    
+
+void main() {                                    
   runApp(BookingCalendarDemoApp());
 }
 
@@ -57,14 +59,17 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
 
     String username = 'fernandocb634@gmail.com';
     String password = 'zzvtoxcggqypujvn';
+    var usr = FirebaseAuth.instance.currentUser;
+    String correo = usr.email;
+    String nombreusr = usr.displayName;
 
     final smtpServer = gmail(username, password);
     final equivalentMessage = Message()
     ..from = Address(username, 'Reserva-T')
     ..recipients.add(Address("${widget.mail}"))
-    ..subject = 'Reservacion para :: 😀 :: ${DateTime.now()}'
+    ..subject = 'Reservacion para ${nombreusr}:: 😀 :: ${DateTime.now()}'
     ..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    ..html = "<h1>Hola ${widget.res}</h1>\n<p>Tienes una reservacion en tu restaurante el dia ${string}</p>";
+    ..html = "<h1>Hola ${widget.res}</h1>\n<p>Tienes una reservacion en tu restaurante el dia ${string}</p><p>Puedes ponerte en contacto con ${nombreusr} a travez de su correo: ${correo}</p>";
 
     await send(equivalentMessage, smtpServer);
   }
@@ -99,6 +104,7 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
           primarySwatch: Colors.grey,
         ),
         home: Scaffold(
+          
           appBar: AppBar(
             title:Text('Reservaciones'),
           ),

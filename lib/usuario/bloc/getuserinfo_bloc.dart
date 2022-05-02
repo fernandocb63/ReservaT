@@ -31,6 +31,7 @@ Future getInfo() async {
     var usr = FirebaseAuth.instance.currentUser;
     mapa['image'] = usr.photoURL;
     mapa['nombre'] = usr.displayName;
+
     return mapa;
   } catch (e) {
     return null;
