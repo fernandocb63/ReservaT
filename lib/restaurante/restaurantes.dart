@@ -14,19 +14,9 @@ class _ResturantesState extends State<Resturantes> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(3,3,20,20),
-      child: ListTile(
-                leading: Image.network(
-                    widget.publicFData["Foto"].toString(),
-                    height: 80,
-                    width: 80,
-                  ),
-                title: Text("${widget.publicFData["Nombre"].toString()}"),
-                subtitle: Text("${widget.publicFData["Descripcion"].toString()}"),
-                trailing: IconButton(
-                  iconSize: 40,
-                  icon: Icon(Icons.arrow_right),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+      child: GestureDetector(
+        onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => Un_restaurante(
                           nombre: widget.publicFData["Nombre"].toString(), 
                           descripcion: widget.publicFData["Descripcion"].toString(), 
@@ -39,8 +29,16 @@ class _ResturantesState extends State<Resturantes> {
                           mail: widget.publicFData["mail"].toString()
 
                           )));
-                  },
-                ),
+        },
+        child: ListTile(
+                  leading: Image.network(
+                      widget.publicFData["Foto"].toString(),
+                      height: 80,
+                      width: 80,
+                    ),
+                  title: Text("${widget.publicFData["Nombre"].toString()}"),
+                  subtitle: Text("${widget.publicFData["Descripcion"].toString()}"),
+        ),
       ));
   }
 }

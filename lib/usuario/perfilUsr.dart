@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/favoritos/mis_favoritos.dart';
+import 'package:reserva_t/historial/bloc/historialpage_bloc.dart';
+import 'package:reserva_t/historial/mi_historial.dart';
 import 'package:reserva_t/restaurante/getRestaurante.dart';
 import 'package:reserva_t/usuario/bloc/getuserinfo_bloc.dart';
 import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
@@ -47,6 +49,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                     iconSize: 40,
                     icon: Icon(Icons.book),
                     onPressed: () {
+                      
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => Descripcion_user()));
                     },
@@ -64,8 +67,9 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                     iconSize: 30,
                     icon: Icon(Icons.history),
                     onPressed: () {
+                      BlocProvider.of<HistorialpageBloc>(context).add(GetMyHistorial());
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Historial()));
+                          MaterialPageRoute(builder: (context) => MiHistorial()));
                     },
                   ),
                 ),
@@ -106,24 +110,6 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
-                    'Restaurantes fav',
-                    style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                  ),
-                  leading: IconButton(
-                    iconSize: 30,
-                    icon: Icon(Icons.favorite),
-                    onPressed: () {
-                      //BlocProvider.of<FavpageBloc>(context).add(GetMyFavorites());
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MisFavoritos()));
-                    },
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.blueGrey.shade900,
-                child: ListTile(
-                  title: Text(
                     'Historial',
                     style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
                   ),
@@ -131,6 +117,7 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                     iconSize: 30,
                     icon: Icon(Icons.history),
                     onPressed: () {
+                      BlocProvider.of<HistorialpageBloc>(context).add(GetMyHistorial());
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Historial()));
                     },

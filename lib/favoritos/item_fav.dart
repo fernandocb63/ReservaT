@@ -33,42 +33,10 @@ class _ItemFavState extends State<ItemFav> {
       },
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: ListTile(
-            leading: Image.network(
-                    widget.myData["Foto"].toString(),
-                    height: 300,
-                  ),
-            title: Stack(children:[ 
-              Padding(
-                padding: const EdgeInsets.fromLTRB(180, 0, 0, 0),
-                child: IconButton(
-                onPressed: () {
-                  BlocProvider.of<DeleteitemBloc>(context)
-                      .add(DeleteMyFav(deleteid: widget.myData["id"]));
-                },
-                icon: Icon(Icons.cancel),
-                iconSize: 20,
-                
-                )
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Text("${widget.myData["Nombre"]}"),
-              ),
-            ],
-            ),
-            subtitle: Stack( children:[ Text("${widget.myData["Descripcion"]}"),
-            ]
-            ),
-            trailing: Stack(
-              children:[ Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: IconButton(
-                  iconSize: 60,
-                  icon: Icon(Icons.arrow_right),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => Un_restaurante(
                               nombre: widget.myData["Nombre"].toString(),
                               descripcion: widget.myData["Descripcion"].toString(),
@@ -79,19 +47,37 @@ class _ItemFavState extends State<ItemFav> {
                               logo: widget.myData["Logo"].toString(),
                               //id: widget.docid
                             )));
-                  },
+            },
+            child: ListTile(
+              leading: Image.network(
+                      widget.myData["Foto"].toString(),
+                      height: 300,
+                    ),
+              title: Stack(children:[ 
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Text("${widget.myData["Nombre"]}"),
                 ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-              //   child: IconButton(
-              //   onPressed: () {
-              //     BlocProvider.of<DeleteitemBloc>(context)
-              //         .add(DeleteMyFav(deleteid: widget.myData["id"]));
-              //   },
-              //   icon: Icon(Icons.cancel))
-              // ),
               ],
+              ),
+              subtitle: Stack( children:[ Text("${widget.myData["Descripcion"]}"),
+              ]
+              ),
+              trailing: Stack(
+                children:[ Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: IconButton(
+                  onPressed: () {
+                    BlocProvider.of<DeleteitemBloc>(context)
+                        .add(DeleteMyFav(deleteid: widget.myData["id"]));
+                  },
+                  icon: Icon(Icons.cancel),
+                  iconSize: 25,
+                  
+                  )
+                ),
+                ],
+              ),
             ),
           ),
         );

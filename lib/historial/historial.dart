@@ -28,6 +28,7 @@ class _HistorialState extends State<Historial> {
           Expanded(
             child: ListView.builder(
               itemBuilder: (BuildContext context, int index) {
+                index =10;
                 return ListTile(
                   leading: FlutterLogo(size: 56.0),
                   title: Text('Restaurante'),
