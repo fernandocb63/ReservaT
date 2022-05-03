@@ -29,11 +29,13 @@ Future<bool> _saveHistorial(String nombree, String fotoo, String fechaa) async {
         .doc("${FirebaseAuth.instance.currentUser.uid}");
 
     var docsRef = await qUser.get();
-    List<Map<String, dynamic>> listHistorial = docsRef.data()["Historial"];
+    List<dynamic> listHistorial = docsRef.data()["Historial"] ?? [];
 
     listHistorial.add(historial);
 
     print(historial);
+
+
 
     await qUser.update({"Historial": listHistorial});
     return true;

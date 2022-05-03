@@ -44,19 +44,22 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
   }
 
   Future<dynamic> uploadBookingMock({BookingService newBooking}) async {
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+    String string2 = dateFormat.format(newBooking.bookingStart);
     await Future.delayed(const Duration(seconds: 1));
     converted.add(DateTimeRange(
         start: newBooking.bookingStart, end: newBooking.bookingEnd));
     print('${newBooking.toJson()} has been uploaded');
     sendMail(newBooking.bookingStart);
+    BlocProvider.of<AddhistorialBloc>(context).add(
+        AddHistoriall(nombre: widget.res, foto: widget.foto, fecha: string2));
   }
 
   void sendMail(DateTime startdate) async {
     DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
     String string = dateFormat.format(startdate);
 
-    BlocProvider.of<AddhistorialBloc>(context).add(
-        AddHistoriall(nombre: widget.res, foto: widget.foto, fecha: string));
+    
 
     String username = 'fernandocb634@gmail.com';
     String password = 'zzvtoxcggqypujvn';
