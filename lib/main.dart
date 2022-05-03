@@ -4,6 +4,7 @@ import 'package:reserva_t/favoritos/bloc/addfav_bloc.dart';
 import 'package:reserva_t/favoritos/bloc/favpage_bloc.dart';
 import 'package:reserva_t/favoritos/delete/bloc/deleteitem_bloc.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
+import 'package:reserva_t/historial/bloc/addhistorial_bloc.dart';
 import 'package:reserva_t/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:reserva_t/login/login_page.dart';
@@ -31,6 +32,9 @@ void main() async {
         BlocProvider(
           create: (context) => GetUserInfoBloc(),
         ),
+        BlocProvider(
+          create: (context) => AddhistorialBloc(),
+        ),
       ],
       child: MyApp(),
     ),
@@ -56,7 +60,9 @@ class MyApp extends StatelessWidget {
           if (state is AuthSuccessState) {
             BlocProvider.of<GetUserInfoBloc>(context).add(GetInfo());
             return HomePage();
-          } else if (state is UnAuthState || state is AuthErrorState || state is SignOutSuccessState) {
+          } else if (state is UnAuthState ||
+              state is AuthErrorState ||
+              state is SignOutSuccessState) {
             return LoginPage();
           }
           return Center(child: CircularProgressIndicator());

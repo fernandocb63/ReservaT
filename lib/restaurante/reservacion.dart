@@ -1,21 +1,24 @@
 import 'package:booking_calendar/booking_calendar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mailer/mailer.dart';
+import 'package:reserva_t/historial/bloc/addhistorial_bloc.dart';
 import 'components/booking_calendar_main.dart';
 import 'package:mailer/smtp_server/mailgun.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-void main() {                                    
+void main() {
   runApp(BookingCalendarDemoApp());
 }
 
 class BookingCalendarDemoApp extends StatefulWidget {
-  BookingCalendarDemoApp({Key key, this.mail, this.res}) : super(key: key);
+  BookingCalendarDemoApp({Key key, this.mail, this.res, this.foto})
+      : super(key: key);
   String mail;
   String res;
+  String foto;
   @override
   State<BookingCalendarDemoApp> createState() => _BookingCalendarDemoAppState();
 }
@@ -36,26 +39,24 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
         bookingStart: DateTime(now.year, now.month, now.day, 8, 0));
   }
 
-  Stream<dynamic> getBookingStreamMock(
-      { DateTime end,  DateTime start}) {
+  Stream<dynamic> getBookingStreamMock({DateTime end, DateTime start}) {
     return Stream.value([]);
   }
 
-
-  Future<dynamic> uploadBookingMock(
-      { BookingService newBooking}) async {
+  Future<dynamic> uploadBookingMock({BookingService newBooking}) async {
     await Future.delayed(const Duration(seconds: 1));
     converted.add(DateTimeRange(
         start: newBooking.bookingStart, end: newBooking.bookingEnd));
     print('${newBooking.toJson()} has been uploaded');
     sendMail(newBooking.bookingStart);
-
   }
 
-    void sendMail(DateTime startdate) async {
+  void sendMail(DateTime startdate) async {
     DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
     String string = dateFormat.format(startdate);
 
+    BlocProvider.of<AddhistorialBloc>(context).add(
+        AddHistoriall(nombre: widget.res, foto: widget.foto, fecha: string));
 
     String username = 'fernandocb634@gmail.com';
     String password = 'zzvtoxcggqypujvn';
@@ -65,19 +66,19 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
 
     final smtpServer = gmail(username, password);
     final equivalentMessage = Message()
-    ..from = Address(username, 'Reserva-T')
-    ..recipients.add(Address("${widget.mail}"))
-    ..subject = 'Reservacion para ${nombreusr}:: 😀 :: ${DateTime.now()}'
-    ..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    ..html = "<h1>Hola ${widget.res}</h1>\n<p>Tienes una reservacion en tu restaurante el dia ${string}</p><p>Puedes ponerte en contacto con ${nombreusr} a travez de su correo: ${correo}</p>";
+      ..from = Address(username, 'Reserva-T')
+      ..recipients.add(Address("${widget.mail}"))
+      ..subject = 'Reservacion para ${nombreusr}:: 😀 :: ${DateTime.now()}'
+      ..text = 'This is the plain text.\nThis is line 2 of the text part.'
+      ..html =
+          "<h1>Hola ${widget.res}</h1>\n<p>Tienes una reservacion en tu restaurante el dia ${string}</p><p>Puedes ponerte en contacto con ${nombreusr} a travez de su correo: ${correo}</p>";
 
     await send(equivalentMessage, smtpServer);
   }
 
-
   List<DateTimeRange> converted = [];
 
-  List<DateTimeRange> convertStreamResultMock({ dynamic streamResult}) {
+  List<DateTimeRange> convertStreamResultMock({dynamic streamResult}) {
     ///here you can parse the streamresult and convert to [List<DateTimeRange>]
     DateTime first = now;
     DateTime second = now.add(Duration(minutes: 55));
@@ -96,17 +97,14 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
         title: 'Reservaciones',
-
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
         home: Scaffold(
-          
           appBar: AppBar(
-            title:Text('Reservaciones'),
+            title: Text('Reservaciones'),
           ),
           body: Center(
             child: BookingCalendar(

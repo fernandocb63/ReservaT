@@ -10,7 +10,7 @@ import 'package:reserva_t/restaurante/menu.dart';
 import 'package:reserva_t/restaurante/reservacion.dart';
 import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
-import"package:hovering/hovering.dart";
+import "package:hovering/hovering.dart";
 import 'package:hover_effect/hover_effect.dart';
 
 class Un_restaurante extends StatefulWidget {
@@ -70,23 +70,23 @@ class _Un_restauranteState extends State<Un_restaurante> {
                     style:
                         TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
                 Card(
-                      color: Colors.blueGrey.shade900,
-                      elevation: 100.0,
-                      child: ListTile(
-                        title: Text(
-                          'Ver menu',
-                          style:
-                              TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                        ),
-                        trailing: IconButton(
-                          iconSize: 40,
-                          icon: Icon(Icons.menu_book),
-                          onPressed: () {
-                            launch(widget.menu);
-                          },
-                        ),
-                      ),
+                  color: Colors.blueGrey.shade900,
+                  elevation: 100.0,
+                  child: ListTile(
+                    title: Text(
+                      'Ver menu',
+                      style:
+                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
                     ),
+                    trailing: IconButton(
+                      iconSize: 40,
+                      icon: Icon(Icons.menu_book),
+                      onPressed: () {
+                        launch(widget.menu);
+                      },
+                    ),
+                  ),
+                ),
                 Card(
                   color: Colors.blueGrey.shade900,
                   elevation: 100.0,
@@ -101,7 +101,10 @@ class _Un_restauranteState extends State<Un_restaurante> {
                       icon: Icon(Icons.perm_contact_cal_outlined),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => BookingCalendarDemoApp(mail: widget.mail, res: widget.nombre)));
+                            builder: (context) => BookingCalendarDemoApp(
+                                mail: widget.mail,
+                                res: widget.nombre,
+                                foto: widget.foto)));
                       },
                     ),
                   ),
@@ -122,7 +125,11 @@ class _Un_restauranteState extends State<Un_restaurante> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ChangeNotifierProvider(
                                 create: (context) => MapaProvider(),
-                                child: Mapa(lat: widget.latitude, long: widget.longitud, nombre: widget.nombre,))));
+                                child: Mapa(
+                                  lat: widget.latitude,
+                                  long: widget.longitud,
+                                  nombre: widget.nombre,
+                                ))));
                       },
                     ),
                   ),

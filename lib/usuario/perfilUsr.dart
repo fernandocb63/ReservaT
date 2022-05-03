@@ -7,7 +7,7 @@ import 'package:reserva_t/usuario/bloc/getuserinfo_bloc.dart';
 import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:reserva_t/usuario/descripcion_user.dart';
 import 'package:reserva_t/usuario/fav_res.dart';
-import 'package:reserva_t/usuario/historial.dart';
+import 'package:reserva_t/historial/historial.dart';
 
 class perfil_usuario extends StatefulWidget {
   perfil_usuario({Key key}) : super(key: key);
