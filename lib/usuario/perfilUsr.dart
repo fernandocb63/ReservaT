@@ -57,24 +57,6 @@ class _perfil_usuarioState extends State<perfil_usuario> {
                 color: Colors.blueGrey.shade900,
                 child: ListTile(
                   title: Text(
-                    'Restaurantes fav',
-                    style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                  ),
-                  leading: IconButton(
-                    iconSize: 30,
-                    icon: Icon(Icons.favorite),
-                    onPressed: () {
-                      //BlocProvider.of<FavpageBloc>(context).add(GetMyFavorites());
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MisFavoritos()));
-                    },
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.blueGrey.shade900,
-                child: ListTile(
-                  title: Text(
                     'Historial',
                     style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
                   ),
