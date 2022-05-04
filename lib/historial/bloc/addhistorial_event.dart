@@ -11,8 +11,9 @@ class AddHistoriall extends AddhistorialEvent {
   String nombre;
   String foto;
   String fecha;
+  String email;
 
-  AddHistoriall({this.nombre, this.foto, this.fecha});
+  AddHistoriall({this.nombre, this.foto, this.fecha, this.email});
   @override
-  List<Object> get props => [nombre, foto, fecha];
+  List<Object> get props => [nombre, foto, fecha, email];
 }

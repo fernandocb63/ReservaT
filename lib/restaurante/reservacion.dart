@@ -33,7 +33,8 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
     // DateTime.now().startOfDay
     // DateTime.now().endOfDay
     mockBookingService = BookingService(
-        serviceName: 'Mock Service',
+        servicePrice: 100,
+        serviceName: 'Mock Service',  
         serviceDuration: 120,
         bookingEnd: DateTime(now.year, now.month, now.day, 18, 0),
         bookingStart: DateTime(now.year, now.month, now.day, 8, 0));
@@ -46,13 +47,22 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
   Future<dynamic> uploadBookingMock({BookingService newBooking}) async {
     DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
     String string2 = dateFormat.format(newBooking.bookingStart);
+    // DateTime get = DateTime.parse(newBooking.bookingStart);
+
+  DateTime now = DateTime.now();
     await Future.delayed(const Duration(seconds: 1));
     converted.add(DateTimeRange(
         start: newBooking.bookingStart, end: newBooking.bookingEnd));
     print('${newBooking.toJson()} has been uploaded');
+    if (newBooking.bookingStart.isAfter(now)){
     sendMail(newBooking.bookingStart);
     BlocProvider.of<AddhistorialBloc>(context).add(
-        AddHistoriall(nombre: widget.res, foto: widget.foto, fecha: string2));
+        AddHistoriall(nombre: widget.res, foto: widget.foto, fecha: string2, email: widget.mail));
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("No se pudo hacer la reservacion")));
+    }
   }
 
   void sendMail(DateTime startdate) async {

@@ -13,7 +13,7 @@ class AddhistorialBloc extends Bloc<AddhistorialEvent, AddhistorialState> {
 }
 
 Future<void> _setHistorial(AddHistoriall event, Emitter emit) async {
-  bool res = await _saveHistorial(event.nombre, event.foto, event.fecha);
+  bool res = await _saveHistorial(event.nombre, event.foto, event.fecha, event.email);
   if (res) {
     emit(AddHistorialSucces());
   } else {
@@ -21,8 +21,8 @@ Future<void> _setHistorial(AddHistoriall event, Emitter emit) async {
   }
 }
 
-Future<bool> _saveHistorial(String nombree, String fotoo, String fechaa) async {
-  Map historial = {'nombre': nombree, 'foto': fotoo, 'fecha': fechaa};
+Future<bool> _saveHistorial(String nombree, String fotoo, String fechaa, String emaill) async {
+  Map historial = {'nombre': nombree, 'foto': fotoo, 'fecha': fechaa,"email":emaill};
   try {
     var qUser = await FirebaseFirestore.instance
         .collection("Usuarios")

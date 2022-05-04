@@ -71,8 +71,7 @@ class _ItemFavState extends State<ItemFav> {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: IconButton(
                   onPressed: () {
-                    BlocProvider.of<DeleteitemBloc>(context)
-                        .add(DeleteMyFav(deleteid: widget.myData["id"]));
+                    eliminarFav(context);
                   },
                   icon: Icon(Icons.cancel),
                   iconSize: 25,
@@ -84,6 +83,43 @@ class _ItemFavState extends State<ItemFav> {
             ),
           ),
         );
+      },
+    );
+  }
+    eliminarFav(BuildContext context) {
+    Widget cancelButton = TextButton(
+      child: Text(
+        "Cancelar",
+        style: TextStyle(
+            fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text(
+        "OK",
+        style: TextStyle(
+            fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+      onPressed: () async {
+        Navigator.of(context).pop();
+         BlocProvider.of<DeleteitemBloc>(context)
+                        .add(DeleteMyFav(deleteid: widget.myData["id"]));
+      },
+    );
+    AlertDialog alert = AlertDialog(
+      title: Text("Eliminar"),
+      content: Text("¿Quieres eliminar ${widget.myData["Nombre"]} de favoritos?"),
+      actions: [cancelButton, continueButton],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
       },
     );
   }

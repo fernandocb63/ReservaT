@@ -5,6 +5,7 @@ import 'package:reserva_t/favoritos/bloc/favpage_bloc.dart';
 import 'package:reserva_t/favoritos/delete/bloc/deleteitem_bloc.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/historial/bloc/addhistorial_bloc.dart';
+import 'package:reserva_t/historial/bloc/eliminarres_bloc.dart';
 import 'package:reserva_t/historial/bloc/historialpage_bloc.dart';
 import 'package:reserva_t/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -38,6 +39,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => HistorialpageBloc()..add(GetMyHistorial()),
+        ),
+        BlocProvider(
+          create: (context) => EliminarresBloc(),
         ),
       ],
       child: MyApp(),
