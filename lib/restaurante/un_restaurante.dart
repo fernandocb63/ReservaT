@@ -41,6 +41,10 @@ class Un_restaurante extends StatefulWidget {
 }
 
 class _Un_restauranteState extends State<Un_restaurante> {
+  double h = 50;
+  double l = 22;
+  double i = 25;
+  int _phoneNumber = 3481460986;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddfavBloc, AddfavState>(
@@ -59,98 +63,143 @@ class _Un_restauranteState extends State<Un_restaurante> {
               title: Text('Restaurante'),
             ),
             body: Column(
+              
               children: [
                 Center(
-                  child: Image.network(
-                    widget.foto,
-                    height: 300,
-                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CircleAvatar(
+                    backgroundImage: NetworkImage(widget.foto),
+                    minRadius: 140,
+                    maxRadius: 140,
+                ),
+                  )
                 ),
                 Text(widget.nombre,
                     style:
                         TextStyle(fontSize: 40, fontStyle: FontStyle.italic)),
-                Card(
-                  color: Colors.blueGrey.shade900,
-                  elevation: 100.0,
-                  child: ListTile(
-                    title: Text(
-                      'Ver menu',
-                      style:
-                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                    ),
-                    trailing: IconButton(
-                      iconSize: 40,
-                      icon: Icon(Icons.menu_book),
-                      onPressed: () {
-                        launch(widget.menu);
-                      },
-                    ),
-                  ),
-                ),
-                Card(
-                  color: Colors.blueGrey.shade900,
-                  elevation: 100.0,
-                  child: ListTile(
-                    title: Text(
-                      'Hacer reservacion',
-                      style:
-                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                    ),
-                    trailing: IconButton(
-                      iconSize: 40,
-                      icon: Icon(Icons.perm_contact_cal_outlined),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => BookingCalendarDemoApp(
-                                mail: widget.mail,
-                                res: widget.nombre,
-                                foto: widget.foto)));
-                      },
+                Container(
+                  height: h,
+                  child: Card(
+                    semanticContainer: true,
+                    color: Colors.blueGrey.shade900,
+                    elevation: 100.0,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                      child: ListTile(
+                        title: Text(
+                          'Ver menu',
+                          style:
+                              TextStyle(fontSize: l, fontStyle: FontStyle.italic),
+                        ),
+                        trailing: IconButton(
+                          iconSize: i,
+                          icon: Icon(Icons.menu_book),
+                          onPressed: () {
+                            launch(widget.menu);
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                Card(
-                  color: Colors.blueGrey.shade900,
-                  elevation: 100.0,
-                  child: ListTile(
-                    title: Text(
-                      'Mapa',
-                      style:
-                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-                    ),
-                    trailing: IconButton(
-                      iconSize: 40,
-                      icon: Icon(Icons.map),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ChangeNotifierProvider(
-                                create: (context) => MapaProvider(),
-                                child: Mapa(
-                                  lat: widget.latitude,
-                                  long: widget.longitud,
-                                  nombre: widget.nombre,
-                                ))));
-                      },
+                Container(
+                  height: h,
+                  child: Card(
+                    color: Colors.blueGrey.shade900,
+                    elevation: 100.0,
+                    child: ListTile(
+                      title: Text(
+                        'Hacer reservacion',
+                        style:
+                            TextStyle(fontSize: l, fontStyle: FontStyle.italic),
+                      ),
+                      trailing: IconButton(
+                        iconSize: i,
+                        icon: Icon(Icons.perm_contact_cal_outlined),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => BookingCalendarDemoApp(
+                                  mail: widget.mail,
+                                  res: widget.nombre,
+                                  foto: widget.foto)));
+                        },
+                      ),
                     ),
                   ),
                 ),
-                Card(
-                  color: Colors.blueGrey.shade900,
-                  elevation: 100.0,
-                  shadowColor: Colors.white60,
-                  child: ListTile(
-                    title: Text(
-                      'Agregar a favoritos',
-                      style:
-                          TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+                Container(
+                  height: h,
+                  child: Card(
+                    color: Colors.blueGrey.shade900,
+                    elevation: 100.0,
+                    child: ListTile(
+                      title: Text(
+                        'Mapa',
+                        style:
+                            TextStyle(fontSize: l, fontStyle: FontStyle.italic),
+                      ),
+                      trailing: IconButton(
+                        iconSize: i,
+                        icon: Icon(Icons.map),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ChangeNotifierProvider(
+                                  create: (context) => MapaProvider(),
+                                  child: Mapa(
+                                    lat: widget.latitude,
+                                    long: widget.longitud,
+                                    nombre: widget.nombre,
+                                  ))));
+                        },
+                      ),
                     ),
-                    trailing: IconButton(
-                      iconSize: 40,
-                      icon: Icon(Icons.favorite),
-                      onPressed: () {
-                        BlocProvider.of<AddfavBloc>(context)
-                            .add(addFavorite(id: widget.id));
-                      },
+                  ),
+                ),
+                Container(
+                  height: h,
+                  child: Card(
+                    color: Colors.blueGrey.shade900,
+                    elevation: 100.0,
+                    shadowColor: Colors.white60,
+                    child: ListTile(
+                      title: Text(
+                        'Agregar a favoritos',
+                        style:
+                            TextStyle(fontSize: l, fontStyle: FontStyle.italic),
+                      ),
+                      trailing: IconButton(
+                        iconSize: i,
+                        icon: Icon(Icons.favorite),
+                        onPressed: () {
+                          BlocProvider.of<AddfavBloc>(context)
+                              .add(addFavorite(id: widget.id));
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: h,
+                  alignment: Alignment.center,
+                  child: Card(
+                    color: Colors.blueGrey.shade900,
+                    elevation: 100.0,
+                    shadowColor: Colors.white60,
+                    child: ListTile(
+                      title: Text(
+                        'Llamar',
+                        style:
+                            TextStyle(fontSize: l, fontStyle: FontStyle.italic),
+                            textAlign: TextAlign.start,
+                      ),
+                      trailing: IconButton(
+                        iconSize: i,
+                        icon: Icon(Icons.phone),
+                        onPressed: () {
+                          launch('tel://$_phoneNumber');
+                        },
+                      ),
                     ),
                   ),
                 ),

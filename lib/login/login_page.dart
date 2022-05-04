@@ -28,6 +28,9 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 24, 
                     fontWeight: FontWeight.bold),
                   ),
+                  
+                  Text("Reserva-T",
+                  style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic, color: Colors.black)),
                   SizedBox(height: 25,),
 
                   MaterialButton(
@@ -35,12 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                       BlocProvider.of<AuthBloc>(context).add(GoogleAuthEvent());
                     },
                     color: Colors.red,
-                    child: Text("LogIn con Google"),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    color: Colors.grey,
-                    child: Text("LogIn como anonimo"),
+                    child: Text("Login con Google"),
                   ),
                 ],
               ),

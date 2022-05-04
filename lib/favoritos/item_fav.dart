@@ -46,6 +46,8 @@ class _ItemFavState extends State<ItemFav> {
                               menu: widget.myData["Menu"].toString(),
                               logo: widget.myData["Logo"].toString(),
                               //id: widget.docid
+                              mail: widget.myData["mail"].toString()
+
                             )));
             },
             child: ListTile(
