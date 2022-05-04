@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                       BlocProvider.of<AuthBloc>(context).add(GoogleAuthEvent());
                     },
                     color: Colors.red,
-                    child: Text("LogIn con Google"),
+                    child: Text("Login con Google"),
                   ),
                   
                 ],
