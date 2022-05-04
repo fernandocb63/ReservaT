@@ -7,6 +7,7 @@ import 'package:reserva_t/auth/bloc/auth_bloc.dart';
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
 
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -28,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 24, 
                     fontWeight: FontWeight.bold),
                   ),
+                  
+                  Text("Reserva-T",
+                  style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic, color: Colors.black)),
                   SizedBox(height: 25,),
 
                   MaterialButton(
