@@ -37,11 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.red,
                     child: Text("LogIn con Google"),
                   ),
-                  MaterialButton(
-                    onPressed: () {},
-                    color: Colors.grey,
-                    child: Text("LogIn como anonimo"),
-                  ),
+                  
                 ],
               ),
             )
