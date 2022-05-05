@@ -26,7 +26,8 @@ class _ResturantesState extends State<Resturantes> {
                           menu: widget.publicFData["Menu"].toString(),
                           logo: widget.publicFData["Logo"].toString(),
                           id: widget.docid,
-                          mail: widget.publicFData["mail"].toString()
+                          mail: widget.publicFData["mail"].toString(),
+                          tel: widget.publicFData["tel"].toString(),
 
                           )));
         },

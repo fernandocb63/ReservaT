@@ -24,7 +24,8 @@ class Un_restaurante extends StatefulWidget {
       this.longitud,
       this.logo,
       this.id,
-      this.mail})
+      this.mail, 
+      this.tel})
       : super(key: key);
   String nombre;
   String descripcion;
@@ -35,6 +36,7 @@ class Un_restaurante extends StatefulWidget {
   String logo;
   String id;
   String mail;
+  String tel;
 
   @override
   State<Un_restaurante> createState() => _Un_restauranteState();
@@ -197,7 +199,7 @@ class _Un_restauranteState extends State<Un_restaurante> {
                         iconSize: i,
                         icon: Icon(Icons.phone),
                         onPressed: () {
-                          launch('tel://$_phoneNumber');
+                          launch('tel://${widget.tel}');
                         },
                       ),
                     ),
