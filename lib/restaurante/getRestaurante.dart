@@ -19,16 +19,13 @@ class _ResUState extends State<ResU> {
   Widget build(BuildContext context) {
     // List<dynamic> res=[];
     TextEditingController textController = TextEditingController();
-    String txt ='';
+    // String txt ='V';
     Future<void> _getres(String val) async {
       
       List<DocumentSnapshot> documentList;
       var equisde = FirebaseFirestore.instance
                   .collection("Restaurantes").get();
-
       print(equisde.toString());
-
-
     }
 
     return Stack(
@@ -41,10 +38,9 @@ class _ResUState extends State<ResU> {
               onChanged: (val){
                 // print(val);
                 _getres(val);
-                setState(() {
-                // txt = val;
+                // setState(() {
                   
-                });
+                // });
                 // print(res);
               },
               decoration: InputDecoration(border: OutlineInputBorder(), 
@@ -58,7 +54,7 @@ class _ResUState extends State<ResU> {
           padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
           child: FirestoreListView(
           query: FirebaseFirestore.instance
-            .collection("Restaurantes")
+            .collection("Restaurantes").orderBy('Nombre')
             // .where("Nombre", isGreaterThanOrEqualTo: txt)
             ,
           itemBuilder: (BuildContext context, QueryDocumentSnapshot<Map<String,dynamic>> document){

@@ -25,7 +25,7 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
         print(listIds);
 
         var queryFotos = await FirebaseFirestore.instance
-          .collection("Restaurantes")
+          .collection("Restaurantes").orderBy('Nombre')
           .get();
 
         var allMyFotosList = queryFotos.docs
