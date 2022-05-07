@@ -15,6 +15,7 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
     on<FavpageEvent>(_getfav );
   }
   FutureOr<void> _getfav(event, emit) async {
+    String txt = event.text;
       try{
         var queryUser = await FirebaseFirestore.instance
           .collection("Usuarios")
@@ -26,6 +27,7 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
 
         var queryFotos = await FirebaseFirestore.instance
           .collection("Restaurantes").orderBy('Nombre')
+          .where("Nombre", isGreaterThanOrEqualTo: txt)
           .get();
 
         var allMyFotosList = queryFotos.docs

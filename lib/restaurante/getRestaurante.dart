@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shimmer/flutter_shimmer.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:reserva_t/restaurante/bloc/getrestaurante_bloc.dart';
 import 'package:reserva_t/restaurante/restaurantes.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_firestore/firebase_firestore.dart';
@@ -20,28 +23,15 @@ class _ResUState extends State<ResU> {
     // List<dynamic> res=[];
     TextEditingController textController = TextEditingController();
     // String txt ='V';
-    Future<void> _getres(String val) async {
-      
-      List<DocumentSnapshot> documentList;
-      var equisde = FirebaseFirestore.instance
-                  .collection("Restaurantes").get();
-      print(equisde.toString());
-    }
 
     return Stack(
-      
-      children: [
+      children:[  
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextField(
               controller: textController,
               onChanged: (val){
-                // print(val);
-                _getres(val);
-                // setState(() {
-                  
-                // });
-                // print(res);
+                BlocProvider.of<GetrestauranteBloc>(context).add(GetMyRes(text: val));               
               },
               decoration: InputDecoration(border: OutlineInputBorder(), 
               hintText: "Ingresa tu busqueda",
@@ -49,26 +39,46 @@ class _ResUState extends State<ResU> {
               suffixIcon: Icon(Icons.navigate_next_outlined))),
         ),
         
-        
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
-          child: FirestoreListView(
-          query: FirebaseFirestore.instance
-            .collection("Restaurantes").orderBy('Nombre')
-            // .where("Nombre", isGreaterThanOrEqualTo: txt)
-            ,
-          itemBuilder: (BuildContext context, QueryDocumentSnapshot<Map<String,dynamic>> document){
-            print(document.data());
-            return Column(
-              children: [
-                Resturantes(publicFData: document.data(), docid: document.id,),
-              ],
-            );
-          }
+          child: BlocConsumer<GetrestauranteBloc, GetrestauranteState>(
+          listener: (context, state) {
+            //Show snackbar
+          },
+          builder: (context, state) {
+            if(state is RespageLoading){
+              return ListView.builder(
+                itemCount: 25,
+                itemBuilder: (BuildContext context, int index){
+                  return YoutubeShimmer();
+                },
+              );
+            } else if(state is RespageVacio){
+              return Center(
+                child: Text("No hay datos por mostrar"),
+              );
+            } else if (state is RespageSuccess){
+              return 
+              Stack(
+                children:[ 
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child:
+                    ListView.builder(
+                    itemCount: state.myFav.length,
+                    itemBuilder: (BuildContext context, int index){
+                      return Resturantes(publicFData: state.myFav[index]);
+                    }),
+                  ),                
+                  ]
+              );
+            }else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
       ),
         ),
       ]
-      
-      );
+    );
   }
 }

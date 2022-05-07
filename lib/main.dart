@@ -11,6 +11,7 @@ import 'package:reserva_t/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:reserva_t/login/login_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reserva_t/restaurante/bloc/getrestaurante_bloc.dart';
 import 'package:reserva_t/usuario/bloc/getuserinfo_bloc.dart';
 
 void main() async {
@@ -42,6 +43,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => EliminarresBloc(),
+        ),
+        BlocProvider(
+          create: (context) => GetrestauranteBloc()..add(GetMyRes()),
         ),
       ],
       child: MyApp(),

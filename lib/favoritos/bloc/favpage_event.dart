@@ -8,4 +8,12 @@ abstract class FavpageEvent extends Equatable{
   List<Object> get props => [];
 }
 
-class GetMyFavorites extends FavpageEvent{}
+class GetMyFavorites extends FavpageEvent{
+  String text;
+
+
+  GetMyFavorites({this.text});
+
+  @override
+  List<Object> get props => [text];
+}
