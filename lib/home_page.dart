@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reserva_t/auth/bloc/auth_bloc.dart';
+import 'package:reserva_t/favoritos/bloc/favpage_bloc.dart';
 import 'package:reserva_t/favoritos/mis_favoritos.dart';
 import 'package:reserva_t/favoritos/fav_page.dart';
 import 'package:reserva_t/restaurante/restaurantes.dart';
-import 'package:reserva_t/usuario/blocfavusr/favpage_bloc.dart';
 import 'package:reserva_t/usuario/perfilUsr.dart';
 import 'package:reserva_t/restaurante/getRestaurante.dart';
 
@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    String txt = '';
     return Scaffold(
       appBar: AppBar(
         title: Text('Reserva[T]'),
@@ -48,6 +49,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
         currentIndex: _currentPageIndex,
         onTap: (index) {
+          BlocProvider.of<FavpageBloc>(context).add(GetMyFavorites(text: txt));
           setState(() {
             _currentPageIndex = index;
           });

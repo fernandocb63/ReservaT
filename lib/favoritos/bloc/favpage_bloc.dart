@@ -23,7 +23,6 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
 
         var docsRef = await queryUser.get();
         var listIds = docsRef.data()["Favoritos"] ?? [];
-        print(listIds);
 
         var queryFotos = await FirebaseFirestore.instance
           .collection("Restaurantes").orderBy('Nombre')
@@ -34,7 +33,6 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
           .where((element) => listIds.contains(element.id))
           .map((element) => element.data().cast<String, dynamic>())
           .toList();
-        print(allMyFotosList);
 
         emit(FavpageSuccess(myFav: allMyFotosList));
 

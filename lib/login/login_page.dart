@@ -17,21 +17,24 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://im.ezgif.com/tmp/ezgif-1-98d8229409.gif"),
+            fit: BoxFit.cover
+            )
+
+        ),
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 50, 0, 10),
+              padding: const EdgeInsets.fromLTRB(0, 480, 0, 10),
               child: Column(
                 children: [
-                  Image.network("https://www.creativefabrica.com/wp-content/uploads/2019/08/Restaurant-Logo-by-Koko-Store-580x386.jpg"),
-                  Text("Sign in", style: TextStyle(
-                    fontSize: 24, 
-                    fontWeight: FontWeight.bold),
-                  ),
-                  
-                  Text("Reserva-T",
-                  style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic, color: Colors.black)),
+                  // Image.network("https://im.ezgif.com/tmp/ezgif-1-98d8229409.gif",
+                  // fit: ,),
+                  Image.network("https://es.bloggif.com/tmp/f5ba215f0911152410cc97fc867ba72d/text.gif?1652054770"),
+                  // Text("Reserva-T",
+                  // style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic, color: Colors.black)),
                   SizedBox(height: 25,),
 
                   MaterialButton(

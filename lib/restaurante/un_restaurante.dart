@@ -46,7 +46,6 @@ class _Un_restauranteState extends State<Un_restaurante> {
   double h = 50;
   double l = 22;
   double i = 25;
-  int _phoneNumber = 3481460986;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddfavBloc, AddfavState>(
