@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage("https://im.ezgif.com/tmp/ezgif-1-98d8229409.gif"),
+            image: AssetImage('assets/loginbg.gif'),
             fit: BoxFit.cover
             )
 
@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   // Image.network("https://im.ezgif.com/tmp/ezgif-1-98d8229409.gif",
                   // fit: ,),
-                  Image.network("https://es.bloggif.com/tmp/f5ba215f0911152410cc97fc867ba72d/text.gif?1652054770"),
+                  Image.asset('assets/text.gif'),
                   // Text("Reserva-T",
                   // style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic, color: Colors.black)),
                   SizedBox(height: 25,),
@@ -41,8 +41,9 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       BlocProvider.of<AuthBloc>(context).add(GoogleAuthEvent());
                     },
-                    color: Colors.red,
-                    child: Text("Login con Google"),
+                    color: Colors.teal.shade200,
+                    child: Text("Login con Google",
+                    style: TextStyle(color: Colors.black)),
                   ),
                   
                 ],

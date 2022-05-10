@@ -23,7 +23,6 @@ class HistorialpageBloc extends Bloc<HistorialpageEvent, HistorialpageState> {
         var docsRef = await queryUser.get();
         List<dynamic> listIds = docsRef.data()["Historial"] ?? [];
 
-        print(listIds);
         emit(HistorialSuccess(myHist: listIds));
 
 

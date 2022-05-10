@@ -22,7 +22,7 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
 
         var docsRef = await queryUser.get();
         List<dynamic> listIds = docsRef.data()["Favoritos"] ?? [];
-        print(listIds);
+
 
         var queryFotos = await FirebaseFirestore.instance
           .collection("Restaurantes")
@@ -33,7 +33,6 @@ class FavpageBloc extends Bloc<FavpageEvent, FavpageState> {
           .map((e) => e.data().cast<String, dynamic>())
           // .addAll({"docId":e.id}))
           .toList();
-        print(allMyFotosList);
 
         emit(FavpageSuccess(myFav: allMyFotosList));
 

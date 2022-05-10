@@ -26,7 +26,6 @@ class GetrestauranteBloc extends Bloc<GetrestauranteEvent, GetrestauranteState> 
           .map((element) => element.data().cast<String, dynamic>())
           .toList();
         
-        print(allMyResList);
 
         emit(RespageSuccess(myFav: allMyResList));
 

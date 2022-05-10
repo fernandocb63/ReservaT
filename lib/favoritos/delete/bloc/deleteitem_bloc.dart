@@ -46,8 +46,6 @@ class DeleteitemBloc extends Bloc<DeleteitemEvent, DeleteitemState> {
         .collection("Usuarios")
         .doc("${FirebaseAuth.instance.currentUser.uid}")
         .update({'Favoritos': Listdelete});
-      print(Listdelete);
-      print(id);
       //await qUser.update({"Favoritos": listIds});
       return true;
       
